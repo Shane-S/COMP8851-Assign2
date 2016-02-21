@@ -102,7 +102,6 @@ public:
     ///
     ///<returns> true if empty, false if not.</returns>
     ////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	bool isEmpty() const
 	{
 		return root == nullptr;
@@ -303,7 +302,7 @@ private:
 	}
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
-    ///<summary> Empties the given sub-tree (by making everything "deleted").</summary>
+    ///<summary> Empties the given sub-tree (by actually deleting nodes).</summary>
     ///
     ///<param name="t"> The root node of the tree to empty.</param>
     ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -313,7 +312,7 @@ private:
         {
             makeEmpty(t->left);
             makeEmpty(t->right);
-            t->deleted = true;
+            delete t;
         }
 	}
 
