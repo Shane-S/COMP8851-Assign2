@@ -249,7 +249,7 @@ private:
         {
             if (t->deleted)
                 return nullptr;
-            else return t;
+            return t;
         }
 
         BinaryNode* here = nullptr;
@@ -272,19 +272,25 @@ private:
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 	BinaryNode * findMax(const BinaryNode *t) const
 	{
-        // Find the largest non-deleted element
-        BinaryNode* cur = t;
-        BinaryNode* maxNode = nullptr;
-        while (cur != nullptr)
+        if (nullptr == t)
+            return nullptr;
+
+        if (!t->left && !t->right)
         {
-            if (!cur->deleted)
-            {
-                maxNode = cur;
-            }
-            cur = cur->right;
+            if (t->deleted)
+                return nullptr;
+            return t;
         }
 
-        return maxNode;
+        BinaryNode* here = nullptr;
+        BinaryNode* maxLeft = nullptr;
+        BinaryNode* maxRight = nullptr;
+
+        if (!t->deleted) here = t;
+        if (t->right) maxRight = findMax(t->right);
+        if (!maxRight && t->left) maxLeft = findMax(t->left);
+
+        return maxRight ? maxRight : (here ? here : maxLeft);
 	}
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
