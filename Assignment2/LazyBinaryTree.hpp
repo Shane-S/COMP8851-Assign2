@@ -242,19 +242,25 @@ private:
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 	BinaryNode * findMin(const BinaryNode *t) const
 	{
-        // Find the smallest non-deleted element
-        BinaryNode* cur = t;
-        BinaryNode* minNode = nullptr;
-        while (cur != nullptr)
+        if (nullptr == t)
+            return nullptr;
+
+        if (!t->left && !t->right)
         {
-            if (!cur->deleted)
-            {
-                minNode = cur;
-            }
-            cur = cur->left;
+            if (t->deleted)
+                return nullptr;
+            else return t;
         }
 
-        return minNode;
+        BinaryNode* here = nullptr;
+        BinaryNode* minLeft = nullptr;
+        BinaryNode* minRight = nullptr;
+
+        if (!t->deleted) here = t;
+        if (t->left) minLeft = findMin(t->left);
+        if (!minLeft && t->right) minRight = findMin(t->right);
+
+        return minLeft ? minLeft : (here ? here : minRight);
 	}
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
