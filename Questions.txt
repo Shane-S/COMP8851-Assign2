@@ -1,5 +1,7 @@
 Written Questions
 -----------------
+1.  See LazyBinaryTree.hpp
+2.  See ChildSiblingTree.hpp
 3.  If a node stores the size of its left sub-tree, it's easy to find the kth-smallest element: the kth-smallest
     element is the element with a left sub-tree of size k.
     The psuedocode for an interative solution might look like this:
@@ -42,5 +44,8 @@ Written Questions
     Perform radix sort with the numerator, traversing the buckets as normal. This should yield the sorted list.
 
 8.  a.  For each element in the array, check if summing it with any of the following elements will yield k.
-    b.  Sort the array using an O(n * logn) sorting algorithm. Then, for each element in the array, perform a binary search for k - element
-        (stopping when an element is > k).
+    b.  Sort the array using an O(n * logn) sorting algorithm. Then, for each element in the array, perform a binary search for k - element.
+        Note that the second step isn't "linear time", as described in the textbook, but the final running time is still O(n * logn).
+    c.  See main.cpp
+9.  See main.cpp
+10. 
