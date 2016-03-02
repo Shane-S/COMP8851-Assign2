@@ -1,0 +1,46 @@
+Written Questions
+-----------------
+3.  If a node stores the size of its left sub-tree, it's easy to find the kth-smallest element: the kth-smallest
+    element is the element with a left sub-tree of size k.
+    The psuedocode for an interative solution might look like this:
+   
+    FindKthSmallest(int k)
+        Current Node = Root
+        While Current Node's Left Sub-tree Size != K
+            If Current Node's Left Sub-tree Size > K
+                Current Node = Current Node's Left Neighbour
+            Else
+                Current Node = Current Node's Right Neighbour
+        Return Current Node
+
+4.  The running time for mergesort on all input is O(n * logn). This is because unlike quicksort, mergesort doesn't
+    partition its data using its input, so that the process is the exact same every time.
+
+5.  The running time for the quicksort implementation in the textbook on sorted and reverse-sorted input is O(n * logn),
+    because choosing the median element will create sub-arrays of equal or nearly-equal size (depending on whether the
+    array size is even or odd). The average case is also O(n * logn) for random input. Theoretically the algorithm could
+    still run in near-quadratic time if the input was arranged such that the median was always the second-smallest or
+    second-largest input, but this is very unlikely.
+
+6.  Insertion sort: Stable; when comparing elements, it will only continue if the previous element is strictly less than the
+                    current one, so it will never swap equivalent elements.
+    Shellsort:      Unstable; equivalent elements will end up in different sub-arrays at different stages (gaps), so they may
+                    not maintain their order.
+    Heapsort:       Unstable; in constructing the heap, some instances of a given element could end up with smaller parents,
+                    while other instances have larger parents, forcing them to move up the tree and thus ending up before elements
+                    they were earlier ahead of or vice versa.
+                    so some of them may move while the others
+    Mergesort:      Stable (most implementations); so long as the elements from the left sub-list are put into the work array
+                    first, mergesort will be stable.
+    Quicksort:      Unstable; consider the case discussed where all elements are duplicates.
+    Bucket sort:    The one presented in the textbook isn't really stable or unstable since it's just counting elements rather than
+                    actually putting them in buckets. If you were to put the elements into their respective buckets, it would be stable
+                    since it traverses the array in order and thus places the elements in the buckets in that order.
+    Radix sort:     Stable (for the same reason as described in bucket sort).
+
+7.  Assuming sorting smallest to largest: first, use radix sort to sort by the denominator, traversing the buckets in reverse at each step.
+    Perform radix sort with the numerator, traversing the buckets as normal. This should yield the sorted list.
+
+8.  a.  For each element in the array, check if summing it with any of the following elements will yield k.
+    b.  Sort the array using an O(n * logn) sorting algorithm. Then, for each element in the array, perform a binary search for k - element
+        (stopping when an element is > k).

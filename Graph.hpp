@@ -13,8 +13,8 @@ public:
 
 	~Graph()
 	{
-		if (_graph != nullptr);
-		pb_graph_free(_graph, 1);
+		if (_graph != nullptr)
+			pb_graph_free(_graph, 1);
 	}
 
 	Graph(Graph&& other)
@@ -106,8 +106,7 @@ public:
 				int adj = v->adjacent[i];
 				inDegree[adj]--;
 				if (inDegree[adj] == 0) q.emplace(adj);
-				// Shouldn't need to remove since vertices processed multiple times will end up at -1
-				// Inefficient, but it avoids a lot of problems
+				// Shouldn't need to remove since vertices processed multiple times will just go below 0
 			}
 		}
 

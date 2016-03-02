@@ -111,12 +111,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BinarySearchTree.hpp" />
+    <ClInclude Include="CTimer.h" />
     <ClInclude Include="dsexceptions.h" />
     <ClInclude Include="Graph.hpp" />
     <ClInclude Include="LazyBinaryTree.hpp" />
     <ClInclude Include="pb_graph.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CTimer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pb_graph.c" />
   </ItemGroup>

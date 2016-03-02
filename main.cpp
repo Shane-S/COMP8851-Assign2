@@ -1,11 +1,68 @@
 #include <iostream>
+#include <algorithm>
+#include <random>
 #include "Graph.hpp"
+#include "CTimer.h"
 
 using std::vector;
 using std::cout;
 using std::cin;
 
-int main()
+bool Naive_K_Sum(vector<int> & numbers, int k)
+{
+	size_t size = numbers.size();
+	for (size_t i = 0; i < size; ++i)
+	{
+		for (size_t j = i + 1; j < size; ++j)
+		{
+			if (numbers[i] + numbers[j] == k) return true;
+		}
+	}
+	return false;
+}
+
+bool Fast_K_Sum(vector<int> & numbers, int k)
+{
+	std::sort(numbers.begin(), numbers.end());
+	for (auto i : numbers)
+	{
+		int tofind = k - i;
+		if (std::binary_search(numbers.begin(), numbers.end(), tofind)) return true;
+	}
+	return false;
+}
+
+void Question_7_53()
+{
+	// Not really the best demo since the other one could theoretically find the combination
+	// very early on depending on the input; it should be run multiple times
+	vector<int> numbers;
+	CTimer timer;
+
+	numbers.reserve(100);
+	for (int i = 0; i < 100; i++)
+	{
+		numbers.push_back(rand());
+	}
+
+	int num = rand();
+	
+	double naive;
+	timer.Start();
+	Naive_K_Sum(numbers, num);
+	timer.End();
+	timer.Diff(naive);
+
+	double fast;
+	timer.Start();
+	Fast_K_Sum(numbers, num);
+	timer.End();
+	timer.Diff(fast);
+
+	cout << "Question 7.53: Naive time: " << naive << "s; Fast time: " << fast << "s" << std::endl;
+}
+
+void Question_9_3() 
 {
 	Graph<int> graph;
 	for (int i = 1; i < 8; i++) {
@@ -26,13 +83,21 @@ int main()
 	graph.AddEdge(4, 6);
 	graph.AddEdge(6, 5);
 
+	cout << "Question 9.3: ";
 	vector<int> order = graph.TopologicalSort();
 	for (auto index : order) {
 		cout << graph.GetData(index) << " ";
 	}
+}
 
+int main()
+{
+	Question_7_53();
 	cout << std::endl;
-	cin.get();
 
+	Question_9_3();
+	cout << std::endl;
+
+	cin.get();
 	return 0;
 }
