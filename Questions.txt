@@ -47,5 +47,11 @@ Written Questions
     b.  Sort the array using an O(n * logn) sorting algorithm. Then, for each element in the array, perform a binary search for k - element.
         Note that the second step isn't "linear time", as described in the textbook, but the final running time is still O(n * logn).
     c.  See main.cpp
+
 9.  See main.cpp
-10. 
+
+10. If we modify Dijkstra's algorithm, this is possible. Create a digraph of the currencies, with the edges as the exchange rates (including an
+    edge with weight 1 from the source vertex to itself). Then, use a max-priority queue instead of a min-priority queue, calculating the cost
+    by multiplying the cost thus far by the edge weight, and run Dijsktra's, stopping if there is a path from the source vertex to itself that
+    is greater than 1. Run this algorithm with each currency as the source to determine whether there's a sequence of exchanges that instantly
+    makes money.
