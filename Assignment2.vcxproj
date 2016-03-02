@@ -112,7 +112,13 @@
   <ItemGroup>
     <ClInclude Include="BinarySearchTree.hpp" />
     <ClInclude Include="dsexceptions.h" />
+    <ClInclude Include="Graph.hpp" />
     <ClInclude Include="LazyBinaryTree.hpp" />
+    <ClInclude Include="pb_graph.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="pb_graph.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
